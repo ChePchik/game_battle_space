@@ -11,7 +11,7 @@ class Alien(Sprite):
         self.ai_settings = ai_settings
 
         # Загружает изображение инопланетянина и устанавливает его атрибут rect.
-        self.image = pygame.image.load('images/1.png')
+        self.image = pygame.image.load('images/spaceship2.png')
         self.rect = self.image.get_rect()
 
         
@@ -19,21 +19,21 @@ class Alien(Sprite):
         self.rect.y = self.rect.height
 
         
-        self.x = int(self.rect.x)
+        self.x = float(self.rect.x)
         
     def check_edges(self):
         
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right:
             return True
-        elif self.rect.left >= 0:
+        elif self.rect.left <= 0:
             return True
         
     def update(self):
         
         self.x += (self.ai_settings.alien_speed_factor *
                         self.ai_settings.fleet_direction)
-        # self.rect.x = self.x
+        self.rect.x = self.x
 
     def blitme(self):
         

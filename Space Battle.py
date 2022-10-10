@@ -14,10 +14,10 @@ def run_game():
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption("Лунтик")
+    pygame.display.set_caption("Space Battle")
     
     
-    play_button = Button(ai_settings, screen, "Закончить!")
+    play_button = Button(ai_settings, screen, "For a fight!")
     
 # Создание экземпляров GameStats и Scoreboard.
     stats = GameStats(ai_settings)

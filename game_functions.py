@@ -6,7 +6,7 @@ from alien import Alien
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
     if event.key == pygame.K_RIGHT:
-        ship.moving_right = False
+        ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
@@ -18,7 +18,7 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         
 def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT:
-        ship.moving_right = True
+        ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
 
@@ -70,7 +70,6 @@ def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_bu
     aliens.draw(screen)
 # Вывод счета.
     sb.show_score()
-    sb.show_score()
 # Кнопка Play отображается в том случае, если игра неактивна.
     if not stats.game_active:
         play_button.draw_button()
@@ -100,12 +99,12 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship,
             stats.score += ai_settings.alien_points * len(aliens)
             sb.prep_score()
         check_high_score(stats, sb)
-        ai_settings.increase_speed()
     if len(aliens) == 0:
 # Если весь флот уничтожен, начинается следующий уровень.
         bullets.empty()
+        ai_settings.increase_speed()
 # Увеличение уровня.
-        stats.level -= 1
+        stats.level += 1
         sb.prep_level()
         create_fleet(ai_settings, screen, ship, aliens)
     
@@ -118,7 +117,7 @@ def check_fleet_edges(ai_settings, aliens):
 def change_fleet_direction(ai_settings, aliens):
     for alien in aliens.sprites():
         alien.rect.y += ai_settings.fleet_drop_speed
-    ai_settings.fleet_direction *= 1
+    ai_settings.fleet_direction *= -1
     
 def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
 # Обрабатывает столкновение корабля с пришельцем.

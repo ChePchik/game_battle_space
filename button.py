@@ -11,7 +11,7 @@ class Button():
         self.width, self.height = 200, 50
         self.button_color = (255, 255, 255)
         self.text_color = (0, 0, 0)
-        self.font = pygame.font.SysFont(None, 100)
+        self.font = pygame.font.SysFont(None, 48)
         
         
         self.rect = pygame.Rect(0, 0, self.width, self.height)
@@ -27,7 +27,6 @@ class Button():
         self.msg_image_rect.center = self.rect.center
         
     def draw_button(self):
-      pass
-        #Не Рисует кнопку
-        # self.screen.fill(self.button_color, self.rect)
-        # self.screen.blit(self.msg_image, self.msg_image_rect)
+        # Рисует кнопку
+        self.screen.fill(self.button_color, self.rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)

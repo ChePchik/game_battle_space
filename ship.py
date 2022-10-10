@@ -10,7 +10,7 @@ class Ship(Sprite):
         self.ai_settings = ai_settings
 
 
-        self.image = pygame.image.load('images/2.png')
+        self.image = pygame.image.load('images/spaceship1.png')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
